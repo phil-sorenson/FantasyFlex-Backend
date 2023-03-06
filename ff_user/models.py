@@ -8,4 +8,4 @@ class FlexUser(models.Model):
     number_of_leagues = models.CharField(max_length=200)
     # avatar_id = models.CharField(max_length=150)
     team_portfolio = models.CharField(max_length=200)
-    imported_leagues = models.Charfield(max_length=200)
+    imported_leagues = models.CharField(max_length=200)
