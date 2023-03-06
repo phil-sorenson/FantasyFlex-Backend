@@ -5,7 +5,6 @@ from rest_framework.permissions import AllowAny
 from rest_framework_simplejwt.views import TokenObtainPairView
 
 User = get_user_model()
-# from sleeper_user.models import SleeperUser
 
 
 class MyTokenObtainPairView(TokenObtainPairView):

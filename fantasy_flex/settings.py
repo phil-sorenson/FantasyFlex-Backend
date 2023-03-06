@@ -34,6 +34,14 @@ INSTALLED_APPS = [
     "authentication.apps.AuthenticationConfig",
     "rest_framework",
     "corsheaders",
+    "ff_user",
+    # Store any user data (authentication app handles private info & JWT) => player shares, number of leagues, application settings (future use)
+    "ffuser_leagues",
+    # Store user's league portfolio/specific info for each league => name, id, platform, avatar, scoring & settings, users, drafts, past seasons, trans, pas trophies/standings
+    "ffuser_teams",
+    # Store team-specific information => name, id, league_name, rosters, picks, avatar, etc
+    "platforms",
+    # Store platform info => name, api_key, api_calls, user's saved data (password & username), per platform JWT (future use),
 ]
 
 MIDDLEWARE = [
