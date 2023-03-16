@@ -105,3 +105,53 @@ dist
 
 # TernJS port file
 .tern-port
+
+
+
+In this updated version of the `SelectLeagues` component, we're using the `axios` library to make a `GET` request to the Sleeper API for both the user's leagues and each selected league. We're also using the `useHistory` hook to navigate back to the home page after importing the leagues.
+
+Finally, let's update the `App` component to use the Axios versions of the `SleeperLogin` and `SelectLeagues` components:
+
+```jsx
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import AddLeaguesButton from './AddLeaguesButton';
+import SelectPlatform from './SelectPlatform';
+import SleeperLogin from './SleeperLoginAxios';
+import SelectLeagues from './SelectLeaguesAxios';
+import SideBar from './SideBar';
+
+function App() {
+  const [importedLeagues, setImportedLeagues] = useState([]);
+
+  const handleLeaguesImported = (leagues) => {
+    setImportedLeagues(leagues);
+  }
+
+  return (
+    <Router>
+      <div>
+        <Switch>
+          <Route path="/" exact>
+            <div>
+              <h1>FantasyPros Multi-League Assistant</h1>
+              <AddLeaguesButton />
+              <SideBar leagues={importedLeagues} />
+            </div>
+          </Route>
+          <Route path="/select-platform">
+            <SelectPlatform />
+          </Route>
+          <Route path="/sleeper-login">
+            <SleeperLogin />
+          </Route>
+          <Route path="/select-leagues">
+            <SelectLeagues onLeaguesImported={handleLeaguesImported} />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
+  );
+}
+
+export default App;
